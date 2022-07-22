@@ -1,5 +1,5 @@
 <script setup>
-import { useInformationStore } from "../stores/information";
+import { useInformationStore } from "@/stores/information";
 </script>
 
 <template>
