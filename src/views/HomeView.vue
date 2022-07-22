@@ -1,10 +1,11 @@
 <script setup>
+import { useInformationStore } from "../stores/information";
 </script>
 
 <template>
   <main>
     <h1>
-      Hello
+      {{ useInformationStore().getFirstName + " " + useInformationStore().getLastName }}
     </h1>
   </main>
 </template>
