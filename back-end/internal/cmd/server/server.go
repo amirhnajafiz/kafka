@@ -14,11 +14,13 @@ func New() *fiber.App {
 	app.Use("/api/admin", middleware.Authentication)
 
 	// creating our api and handler
-	api := app.Group("/api")
+	v1 := app.Group("/api")
+	v2 := v1.Group("/admin")
 	h := handler.Handler{}
 
 	// register our handler
-	h.Register(api)
+	h.RegisterPersonal(v1)
+	h.RegisterAdmin(v2)
 
 	return app
 }
