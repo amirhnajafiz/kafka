@@ -9,13 +9,12 @@ import (
 func New() *fiber.App {
 	app := fiber.New()
 
-	h := handler.Handler{}
-
 	app.Use("/api/admin", middleware.Authentication)
 
-	app.Get("/api/personalInfo", h.GetPersonalInformation)
-	app.Get("/api/projects", h.GetListOfProjects)
-	app.Get("/api/projects/:id", h.GetASingleProject)
+	api := app.Group("/api")
+	h := handler.Handler{}
+
+	h.Register(api)
 
 	return app
 }

@@ -19,3 +19,9 @@ func (h *Handler) GetListOfProjects(c *fiber.Ctx) error {
 func (h *Handler) GetASingleProject(c *fiber.Ctx) error {
 	return c.SendStatus(http.StatusAccepted)
 }
+
+func (h *Handler) Register(api fiber.Router) {
+	api.Get("/api/personalInfo", h.GetPersonalInformation)
+	api.Get("/api/projects", h.GetListOfProjects)
+	api.Get("/api/projects/:id", h.GetASingleProject)
+}
