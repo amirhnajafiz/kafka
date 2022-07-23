@@ -3,11 +3,11 @@ package cmd
 import (
 	"log"
 
-	"github.com/gofiber/fiber/v2"
+	"github.com/amirhnajafiz/personal-website/back-end/internal/cmd/server"
 )
 
 func Execute() {
-	app := fiber.New()
+	app := server.New()
 
 	if err := app.Listen(":8080"); err != nil {
 		log.Fatal(err)
