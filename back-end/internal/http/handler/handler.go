@@ -21,7 +21,7 @@ func (h *Handler) GetASingleProject(c *fiber.Ctx) error {
 }
 
 func (h *Handler) Register(api fiber.Router) {
-	api.Get("/api/personalInfo", h.GetPersonalInformation)
-	api.Get("/api/projects", h.GetListOfProjects)
-	api.Get("/api/projects/:id", h.GetASingleProject)
+	api.Get("/personalInfo", h.GetPersonalInformation)
+	api.Get("/projects", h.GetListOfProjects)
+	api.Get("/projects/:id", h.GetASingleProject)
 }
