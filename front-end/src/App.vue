@@ -1,11 +1,13 @@
 <script setup>
-import { RouterView } from 'vue-router'
 import Header from "@/components/Header.vue";
+import RoutesWithTransition from "@/router/RoutesWithTransition.vue";
 </script>
 
 <template>
+  <!-- Navigation bar -->
   <Header />
-  <RouterView />
+  <!-- Router view -->
+  <RoutesWithTransition />
 </template>
 
 <style>
