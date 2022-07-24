@@ -1,8 +1,33 @@
 import axios from 'axios'
 
+import authService from "./auth"
+
+function withToken(reqConfig) {
+    const {
+        withToken,
+        ...otherReqConfig
+    } = reqConfig
+
+    if (!withToken) {
+        return otherReqConfig
+    }
+
+    const token = authService.getToken()
+    otherReqConfig.headers.Authorization = `Bearer ${token}`
+
+    return otherReqConfig
+}
+
+const requestInterceptors = [withToken]
+
 class HttpService {
     constructor(instance) {
         this.instance = instance
+        HttpService.injectRequestResponseInspectors(this.instance, requestInterceptors)
+    }
+
+    static injectRequestResponseInspectors(instance, interceptors) {
+        interceptors.forEach((interceptor) => instance.interceptors.request.use(interceptor))
     }
 
     get(url, config) {
