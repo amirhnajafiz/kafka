@@ -1,9 +1,9 @@
 package model
 
 type Project struct {
-	Id          int
-	Title       string
-	Description string
-	Link        string
-	Visible     bool
+	Id          int    `bson:"id,omitempty"`
+	Title       string `bson:"title,omitempty"`
+	Description string `bson:"description,omitempty"`
+	Link        string `bson:"link,omitempty"`
+	Visible     bool   `bson:"visible,omitempty"`
 }
