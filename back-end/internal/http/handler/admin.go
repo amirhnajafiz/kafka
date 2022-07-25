@@ -10,7 +10,7 @@ func (h *Handler) UpdatePersonal(c *fiber.Ctx) error {
 	return c.SendStatus(http.StatusOK)
 }
 
-func (h *Handler) UpdateProject(c *fiber.Ctx) error {
+func (h *Handler) UpsertProject(c *fiber.Ctx) error {
 	return c.SendStatus(http.StatusOK)
 }
 
