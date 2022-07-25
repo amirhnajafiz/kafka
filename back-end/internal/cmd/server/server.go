@@ -19,7 +19,7 @@ func New() *fiber.App {
 	h := handler.Handler{}
 
 	// register our handler
-	h.RegisterPersonal(v1)
+	h.RegisterClient(v1)
 	h.RegisterAdmin(v2)
 
 	return app
