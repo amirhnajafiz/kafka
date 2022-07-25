@@ -1,0 +1,37 @@
+[
+    {
+        "create": "projects",
+        "validator": {
+            "$jsonSchema": {
+               "required": [ "title", "description", "link" ],
+               "properties": {
+                  "title": {
+                    "bsonType": "string"
+                  },
+                  "description": {
+                    "bsonType": "string"
+                  },
+                  "link": {
+                    "bsonType": "string"
+                  },
+                  "visible": {
+                    "bsonType": "bool",
+                    "default": false
+                  }
+               }
+            }
+          }
+    },
+    {
+        "createIndexes": "projects",
+        "indexes": [
+            {
+                "key": {
+                    "title": 1
+                },
+                "name": "unique_title",
+                "unique": true
+            }
+        ]
+    }
+]
