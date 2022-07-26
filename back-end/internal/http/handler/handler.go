@@ -15,6 +15,7 @@ func (h *Handler) RegisterClient(api fiber.Router) {
 }
 
 func (h *Handler) RegisterAdmin(api fiber.Router) {
+	api.Get("/projects", h.GetAllProjects)
 	api.Put("/project/:id", h.UpsertProject)
 	api.Delete("/project/:id", h.RemoveProject)
 }

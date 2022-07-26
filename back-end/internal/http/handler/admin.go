@@ -6,6 +6,15 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+func (h *Handler) GetAllProjects(c *fiber.Ctx) error {
+	projects, err := h.ProjectsCollection.GetAll(c.Context())
+	if err != nil {
+		return c.SendString(err.Error())
+	}
+
+	return c.JSON(projects)
+}
+
 func (h *Handler) UpsertProject(c *fiber.Ctx) error {
 	err := h.ProjectsCollection.Upsert(c.Context(), nil)
 	if err != nil {
