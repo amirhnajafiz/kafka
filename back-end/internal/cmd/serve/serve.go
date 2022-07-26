@@ -4,6 +4,7 @@ import (
 	"log"
 	"strconv"
 
+	"github.com/amirhnajafiz/personal-website/back-end/internal/config"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/handler"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/middleware"
 	"github.com/gofiber/fiber/v2"
@@ -24,6 +25,9 @@ func Command() *cobra.Command {
 
 // entrypoint of the serve command
 func run() {
+	// loading configs
+	cfg := config.Load()
+
 	// create app
 	app := fiber.New()
 
@@ -39,7 +43,7 @@ func run() {
 	h.RegisterClient(v1)
 	h.RegisterAdmin(v2)
 
-	serve(app, 8080)
+	serve(app, cfg.Address)
 }
 
 // serve starts the backend server on a give port

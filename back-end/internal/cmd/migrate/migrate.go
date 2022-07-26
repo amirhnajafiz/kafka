@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/amirhnajafiz/personal-website/back-end/internal/config"
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/spf13/cobra"
@@ -11,7 +12,6 @@ import (
 
 const (
 	path = "file://./internal/model/migrations"
-	url  = ""
 )
 
 // Command will return the cobra command for migration package
@@ -31,9 +31,12 @@ func Command() *cobra.Command {
 
 // run is the entrypoint of our migrate package
 func run(args []string) error {
+	// loading configs
+	cfg := config.Load()
+
 	m, err := migrate.New(
 		path,
-		url,
+		cfg.Mongodb.URL,
 	)
 	if err != nil {
 		return fmt.Errorf("migration failed: %w", err)
