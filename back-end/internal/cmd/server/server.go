@@ -1,6 +1,8 @@
 package server
 
 import (
+	"log"
+
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/handler"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/middleware"
 	"github.com/gofiber/fiber/v2"
@@ -23,4 +25,12 @@ func New() *fiber.App {
 	h.RegisterAdmin(v2)
 
 	return app
+}
+
+func main() {
+	app := New()
+
+	if err := app.Listen(":8080"); err != nil {
+		log.Fatal(err)
+	}
 }

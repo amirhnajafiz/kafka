@@ -3,13 +3,17 @@ package cmd
 import (
 	"log"
 
-	"github.com/amirhnajafiz/personal-website/back-end/internal/cmd/server"
+	"github.com/spf13/cobra"
 )
 
 func Execute() {
-	app := server.New()
+	rootCmd := &cobra.Command{
+		Use:   "serve",
+		Short: "personal website backend",
+		Long:  "starting the personal website backend server",
+	}
 
-	if err := app.Listen(":8080"); err != nil {
+	if err := rootCmd.Execute(); err != nil {
 		log.Fatal(err)
 	}
 }
