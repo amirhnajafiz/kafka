@@ -1,15 +1,23 @@
 package handler
 
 import (
-	"net/http"
-
 	"github.com/gofiber/fiber/v2"
 )
 
 func (h *Handler) GetProjects(c *fiber.Ctx) error {
-	return c.SendStatus(http.StatusOK)
+	p, err := h.ProjectsCollection.GetAllAvailable(c.Context())
+	if err != nil {
+		return c.SendString(err.Error())
+	}
+
+	return c.JSON(p)
 }
 
 func (h *Handler) GetProjectById(c *fiber.Ctx) error {
-	return c.SendStatus(http.StatusAccepted)
+	p, err := h.ProjectsCollection.GetSingle(c.Context(), "")
+	if err != nil {
+		return c.SendString(err.Error())
+	}
+
+	return c.JSON(p)
 }
