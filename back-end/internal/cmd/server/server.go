@@ -2,13 +2,26 @@ package server
 
 import (
 	"log"
+	"strconv"
 
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/handler"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/middleware"
 	"github.com/gofiber/fiber/v2"
+	"github.com/spf13/cobra"
 )
 
-func New() *fiber.App {
+func Command() *cobra.Command {
+	return &cobra.Command{
+		Use:   "serve",
+		Short: "start backend server",
+		Long:  "start backend server",
+		Run: func(_ *cobra.Command, _ []string) {
+			run()
+		},
+	}
+}
+
+func run() {
 	// create app
 	app := fiber.New()
 
@@ -24,13 +37,13 @@ func New() *fiber.App {
 	h.RegisterClient(v1)
 	h.RegisterAdmin(v2)
 
-	return app
+	serve(app, 8080)
 }
 
-func main() {
-	app := New()
+func serve(app *fiber.App, port int) {
+	addr := ":" + strconv.Itoa(port)
 
-	if err := app.Listen(":8080"); err != nil {
+	if err := app.Listen(addr); err != nil {
 		log.Fatal(err)
 	}
 }

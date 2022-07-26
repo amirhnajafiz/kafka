@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/gofiber/fiber/v2 v2.35.0
 	github.com/golang-migrate/migrate/v4 v4.15.2
+	github.com/spf13/cobra v1.5.0
 	go.mongodb.org/mongo-driver v1.10.0
 )
 
@@ -17,7 +18,6 @@ require (
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/spf13/cobra v1.5.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.38.0 // indirect
