@@ -34,7 +34,7 @@ func run() {
 	app := fiber.New()
 
 	// create db
-	db, err := mongo.NewConnection(cfg.Mongodb.URL, cfg.Mongodb.Database)
+	db, err := mongo.NewConnection(cfg.Mongodb)
 	if err != nil {
 		panic(err)
 	}
