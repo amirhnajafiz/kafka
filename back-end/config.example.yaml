@@ -1,0 +1,6 @@
+address: 8000
+
+mongodb:
+  database: ""
+  url: ""
+  
