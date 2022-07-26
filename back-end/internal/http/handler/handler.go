@@ -11,11 +11,11 @@ type Handler struct {
 
 func (h *Handler) RegisterClient(api fiber.Router) {
 	api.Get("/projects", h.GetVisibleProjects)
-	api.Get("/project/:id", h.GetProjectById)
+	api.Get("/project/:title", h.GetProjectById)
 }
 
 func (h *Handler) RegisterAdmin(api fiber.Router) {
 	api.Get("/projects", h.GetAllProjects)
-	api.Put("/project/:id", h.UpsertProject)
-	api.Delete("/project/:id", h.RemoveProject)
+	api.Put("/projects", h.UpsertProject)
+	api.Delete("/project/:title", h.RemoveProject)
 }

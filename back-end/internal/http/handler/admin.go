@@ -48,17 +48,7 @@ func (h *Handler) UpsertProject(c *fiber.Ctx) error {
 }
 
 func (h *Handler) RemoveProject(c *fiber.Ctx) error {
-	type request struct {
-		Title string `json:"title"`
-	}
-
-	var userRequest request
-
-	if err := c.BodyParser(&userRequest); err != nil {
-		return c.SendString(err.Error())
-	}
-
-	err := h.ProjectsCollection.Delete(c.Context(), userRequest.Title)
+	err := h.ProjectsCollection.Delete(c.Context(), c.Params("title"))
 	if err != nil {
 		return c.SendString(err.Error())
 	}

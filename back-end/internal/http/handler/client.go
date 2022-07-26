@@ -21,7 +21,7 @@ func (h *Handler) GetVisibleProjects(c *fiber.Ctx) error {
 }
 
 func (h *Handler) GetProjectById(c *fiber.Ctx) error {
-	p, err := h.ProjectsCollection.GetSingle(c.Context(), "")
+	p, err := h.ProjectsCollection.GetSingle(c.Context(), c.Params("title"))
 	if err != nil {
 		return c.SendString(err.Error())
 	}
