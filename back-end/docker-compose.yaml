@@ -1,6 +1,13 @@
 version: '3.9'
 
 services:
+  node-app:
+    container_name: node-app
+    restart: always
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
 
   mongo:
     image: mongo
