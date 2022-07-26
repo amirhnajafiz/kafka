@@ -5,6 +5,8 @@ import (
 	"strconv"
 
 	"github.com/amirhnajafiz/personal-website/back-end/internal/config"
+	"github.com/amirhnajafiz/personal-website/back-end/internal/database/mongo"
+	"github.com/amirhnajafiz/personal-website/back-end/internal/database/store"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/handler"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/middleware"
 	"github.com/gofiber/fiber/v2"
@@ -31,13 +33,23 @@ func run() {
 	// create app
 	app := fiber.New()
 
-	// using auth middleware
-	app.Use("/api/admin", middleware.Authentication)
+	// create db
+	db, err := mongo.NewConnection(cfg.Mongodb.URL)
+	if err != nil {
+		panic(err)
+	}
 
 	// creating our api and handler
 	v1 := app.Group("/api")
 	v2 := v1.Group("/admin")
-	h := handler.Handler{}
+	h := handler.Handler{
+		ProjectsCollection: store.ProjectsCollection{
+			DB: db.Database(""),
+		},
+	}
+
+	// using auth middleware
+	app.Use("/api/admin", middleware.Authentication)
 
 	// register our handler
 	h.RegisterClient(v1)
