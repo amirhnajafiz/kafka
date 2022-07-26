@@ -6,7 +6,8 @@ func Default() Config {
 	return Config{
 		Address: 8080,
 		Mongodb: mongo.Config{
-			URL: "",
+			Database: "",
+			URL:      "",
 		},
 	}
 }

@@ -34,7 +34,7 @@ func run() {
 	app := fiber.New()
 
 	// create db
-	db, err := mongo.NewConnection(cfg.Mongodb.URL)
+	db, err := mongo.NewConnection(cfg.Mongodb.URL, cfg.Mongodb.Database)
 	if err != nil {
 		panic(err)
 	}
@@ -44,7 +44,7 @@ func run() {
 	v2 := v1.Group("/admin")
 	h := handler.Handler{
 		ProjectsCollection: store.ProjectsCollection{
-			DB: db.Database(""),
+			DB: db,
 		},
 	}
 

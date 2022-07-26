@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-func NewConnection(url string) (*mongo.Client, error) {
+func NewConnection(url string, db string) (*mongo.Database, error) {
 	ctx := context.Background()
 
 	// Create a new client and connect to the server
@@ -22,5 +22,5 @@ func NewConnection(url string) (*mongo.Client, error) {
 		return nil, fmt.Errorf("failed to ping mongo: %w", err)
 	}
 
-	return client, nil
+	return client.Database(db), nil
 }

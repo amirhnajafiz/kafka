@@ -1,5 +1,6 @@
 package mongo
 
 type Config struct {
-	URL string `koanf:"url"`
+	Database string `konaf:"database"`
+	URL      string `koanf:"url"`
 }
