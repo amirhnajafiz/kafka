@@ -12,7 +12,8 @@ import (
 )
 
 type Config struct {
-	Mongo mongo.Config
+	Address int          `koanf:"address"`
+	Mongodb mongo.Config `koanf:"mongodb"`
 }
 
 func Load() Config {

@@ -4,7 +4,8 @@ import "github.com/amirhnajafiz/personal-website/back-end/internal/database/mong
 
 func Default() Config {
 	return Config{
-		Mongo: mongo.Config{
+		Address: 8080,
+		Mongodb: mongo.Config{
 			URL: "",
 		},
 	}
