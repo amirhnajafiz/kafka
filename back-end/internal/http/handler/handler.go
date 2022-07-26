@@ -10,7 +10,7 @@ type Handler struct {
 }
 
 func (h *Handler) RegisterClient(api fiber.Router) {
-	api.Get("/projects", h.GetProjects)
+	api.Get("/projects", h.GetVisibleProjects)
 	api.Get("/project/:id", h.GetProjectById)
 }
 

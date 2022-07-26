@@ -2,10 +2,17 @@ package handler
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
-func (h *Handler) GetProjects(c *fiber.Ctx) error {
-	p, err := h.ProjectsCollection.GetAllAvailable(c.Context())
+func (h *Handler) GetVisibleProjects(c *fiber.Ctx) error {
+	filter := bson.M{
+		"visible": bson.M{
+			"$eq": true,
+		},
+	}
+
+	p, err := h.ProjectsCollection.GetAll(c.Context(), filter)
 	if err != nil {
 		return c.SendString(err.Error())
 	}

@@ -4,10 +4,13 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 func (h *Handler) GetAllProjects(c *fiber.Ctx) error {
-	projects, err := h.ProjectsCollection.GetAll(c.Context())
+	filter := bson.D{{}}
+
+	projects, err := h.ProjectsCollection.GetAll(c.Context(), filter)
 	if err != nil {
 		return c.SendString(err.Error())
 	}

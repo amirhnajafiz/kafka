@@ -27,36 +27,7 @@ func (p *ProjectsCollection) Upsert(c context.Context, project *model.Project) e
 	return nil
 }
 
-func (p *ProjectsCollection) GetAll(c context.Context) ([]*model.Project, error) {
-	filter := bson.D{{}}
-
-	var projects []*model.Project
-
-	cur, err := p.DB.Collection(projectsCollection).Find(c, filter)
-	if err != nil {
-		return nil, err
-	}
-
-	var project *model.Project
-
-	for cur.Next(c) {
-		if err := cur.Decode(&project); err != nil {
-			return nil, err
-		}
-
-		projects = append(projects, project)
-	}
-
-	return projects, nil
-}
-
-func (p *ProjectsCollection) GetAllAvailable(c context.Context) ([]*model.Project, error) {
-	filter := bson.M{
-		"visible": bson.M{
-			"$eq": true,
-		},
-	}
-
+func (p *ProjectsCollection) GetAll(c context.Context, filter interface{}) ([]*model.Project, error) {
 	var projects []*model.Project
 
 	cur, err := p.DB.Collection(projectsCollection).Find(c, filter)
