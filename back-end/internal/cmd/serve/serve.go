@@ -1,4 +1,4 @@
-package server
+package serve
 
 import (
 	"log"
@@ -10,6 +10,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// Command will return the cobra command for serve package.
 func Command() *cobra.Command {
 	return &cobra.Command{
 		Use:   "serve",
@@ -21,6 +22,7 @@ func Command() *cobra.Command {
 	}
 }
 
+// entrypoint of the serve command
 func run() {
 	// create app
 	app := fiber.New()
@@ -40,6 +42,7 @@ func run() {
 	serve(app, 8080)
 }
 
+// serve starts the backend server on a give port
 func serve(app *fiber.App, port int) {
 	addr := ":" + strconv.Itoa(port)
 
