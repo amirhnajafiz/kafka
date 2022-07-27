@@ -17,13 +17,20 @@ func GenerateToken(user string, pass string, key string, timeout time.Duration) 
 		Username: user,
 		Password: pass,
 		StandardClaims: jwt.StandardClaims{
-			// In JWT, the expiry time is expressed as unix milliseconds
 			ExpiresAt: time.Now().Add(timeout * time.Minute).Unix(),
 		},
 	}
 
-	// Declare the token with the algorithm used for signing, and the claims
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	return token.SignedString(key)
+}
+
+func ParseToken(jwtToken string, key string) (bool, error) {
+	claims := &JWT{}
+	tkn, err := jwt.ParseWithClaims(jwtToken, claims, func(token *jwt.Token) (interface{}, error) {
+		return key, nil
+	})
+
+	return tkn.Valid, err
 }
