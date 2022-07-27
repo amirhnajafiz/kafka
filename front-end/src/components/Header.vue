@@ -1,5 +1,6 @@
 <template>
   <header class="header">
+    <Logo class="logo" />
     <nav class="nav">
       <RouterLink class="select" to="/">Amirhossein Najafizade</RouterLink>
       <div>
@@ -13,8 +14,10 @@
 </template>
 
 <script>
+import Logo from './Logo.vue';
 export default {
-  name: "Header",
+    name: "Header",
+    components: { Logo }
 };
 </script>
 
@@ -25,6 +28,11 @@ a {
 
 .header {
   width: 100%;
+}
+
+.logo {
+  width: 40%;
+  margin: 100px auto 50px;
 }
 
 .nav {
