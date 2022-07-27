@@ -17,8 +17,8 @@ import (
 func Command() *cobra.Command {
 	return &cobra.Command{
 		Use:   "serve",
-		Short: "start backend server",
-		Long:  "start backend server",
+		Short: "serve service",
+		Long:  "start golang http service",
 		Run: func(_ *cobra.Command, _ []string) {
 			run()
 		},

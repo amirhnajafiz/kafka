@@ -19,7 +19,7 @@ func Command() *cobra.Command {
 	return &cobra.Command{
 		Use:   "migrate",
 		Short: "migrate mongodb",
-		Long:  "migrate our website mongo database",
+		Long:  "executing migration for our mongodb",
 		Run: func(cmd *cobra.Command, args []string) {
 			err := run(args)
 			if err != nil {
@@ -34,6 +34,7 @@ func run(args []string) error {
 	// loading configs
 	cfg := config.Load()
 
+	// creating a new migrate
 	m, err := migrate.New(
 		path,
 		cfg.Mongodb.URL,
@@ -42,6 +43,7 @@ func run(args []string) error {
 		return fmt.Errorf("migration failed: %w", err)
 	}
 
+	// migration function
 	var migration func() error
 
 	if args[0] == "up" {
@@ -50,6 +52,7 @@ func run(args []string) error {
 		migration = m.Down
 	}
 
+	// executing migration
 	if err := migration(); err != nil {
 		return fmt.Errorf("failed to execute migration: %w", err)
 	}

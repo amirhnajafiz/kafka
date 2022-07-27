@@ -8,6 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// Execute will start our cobra command
 func Execute() {
 	// creating a root command for cobra
 	rootCmd := &cobra.Command{
