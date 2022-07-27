@@ -9,6 +9,7 @@ import (
 	"github.com/amirhnajafiz/personal-website/back-end/internal/database/store"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/handler"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/http/middleware"
+	"github.com/amirhnajafiz/personal-website/back-end/internal/jwt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/spf13/cobra"
 )
@@ -48,8 +49,16 @@ func run() {
 		},
 	}
 
+	// create auth
+	auth := middleware.Auth{
+		JWT: jwt.JWT{
+			Key:     cfg.JWT.Key,
+			Timeout: cfg.JWT.Timeout,
+		},
+	}
+
 	// using auth middleware
-	app.Use("/api/admin", middleware.Authentication)
+	app.Use("/api/admin", auth.Authentication)
 
 	// register our handler
 	h.RegisterClient(v1)
