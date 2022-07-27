@@ -1,6 +1,16 @@
 /* base styles */
 * {
+  /* box sizing */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* main colors */
+  background-color: rgb(3, 52, 67);
+  color: #ffffff;
+  /* font */
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
 }
