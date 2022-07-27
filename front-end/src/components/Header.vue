@@ -28,6 +28,8 @@ a {
 
 .header {
   width: 100%;
+
+  margin-bottom: 50px;
 }
 
 .logo {

@@ -2,9 +2,12 @@
 </script>
 
 <template>
-  <main>
+  <main style="text-align: center;">
     <h1>
-      Hi, Welcome to my official website.
+      Hi, my name ia Amirhossein.
     </h1>
+    <p>
+      Welcome to my official website.
+    </p>
   </main>
 </template>
