@@ -3,11 +3,12 @@ package handler
 import (
 	"github.com/amirhnajafiz/personal-website/back-end/internal/database/store"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/jwt"
+	"github.com/amirhnajafiz/personal-website/back-end/internal/model"
 	"github.com/gofiber/fiber/v2"
 )
 
 type Handler struct {
-	Admin              Admin
+	Admin              model.Admin
 	JWT                jwt.JWT
 	ProjectsCollection store.ProjectsCollection
 }
@@ -16,6 +17,7 @@ type Handler struct {
 func (h *Handler) RegisterClient(api fiber.Router) {
 	api.Get("/projects", h.GetVisibleProjects)
 	api.Get("/project/:title", h.GetProjectById)
+	api.Post("/login", h.Login)
 }
 
 // RegisterAdmin creates the routes of admin

@@ -6,11 +6,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-type Admin struct {
-	User string `koanf:"user"`
-	Pass string `koanf:"pass"`
-}
-
 func (h *Handler) Login(c *fiber.Ctx) error {
 	type request struct {
 		Username string `json:"username"`
