@@ -9,15 +9,17 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
+// NewConnection creates a connection to our mongodb
 func NewConnection(cfg Config) (*mongo.Database, error) {
 	ctx := context.Background()
 
-	// Create a new client and connect to the server
+	// create a new client and connect to the server
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(cfg.URL))
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to mongo: %w", err)
 	}
 
+	// ping mongodb
 	if err := client.Ping(ctx, readpref.Primary()); err != nil {
 		return nil, fmt.Errorf("failed to ping mongo: %w", err)
 	}

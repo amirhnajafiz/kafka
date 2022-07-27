@@ -9,11 +9,13 @@ type Handler struct {
 	ProjectsCollection store.ProjectsCollection
 }
 
+// RegisterClient creates the routes of client
 func (h *Handler) RegisterClient(api fiber.Router) {
 	api.Get("/projects", h.GetVisibleProjects)
 	api.Get("/project/:title", h.GetProjectById)
 }
 
+// RegisterAdmin creates the routes of admin
 func (h *Handler) RegisterAdmin(api fiber.Router) {
 	api.Get("/projects", h.GetAllProjects)
 	api.Put("/projects", h.UpsertProject)
