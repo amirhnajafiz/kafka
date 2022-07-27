@@ -14,14 +14,8 @@ RUN npm run build
 # production stage
 FROM nginx:stable-alpine as production-stage
 
-# copy nginx config
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-## Remove default nginx index page
-RUN rm -rf /usr/share/nginx/html/*
+EXPOSE 80
 
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-EXPOSE 8081
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
