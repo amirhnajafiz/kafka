@@ -1,6 +1,7 @@
 <script setup>
 import Header from "@/components/Header.vue";
 import RoutesWithTransition from "@/router/RoutesWithTransition.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
 <template>
@@ -9,6 +10,8 @@ import RoutesWithTransition from "@/router/RoutesWithTransition.vue";
     <Header />
     <!-- Router view -->
     <RoutesWithTransition />
+    <!-- Footer -->
+    <Footer />
   </main>
 </template>
 
