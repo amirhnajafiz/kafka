@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/amirhnajafiz/personal-website/back-end/internal/database/mongo"
+	"github.com/amirhnajafiz/personal-website/back-end/internal/jwt"
 	"github.com/knadh/koanf"
 	"github.com/knadh/koanf/parsers/yaml"
 	"github.com/knadh/koanf/providers/file"
@@ -13,6 +14,7 @@ import (
 
 type Config struct {
 	Address int          `koanf:"address"`
+	JWT     jwt.Config   `koanf:"jwt"`
 	Mongodb mongo.Config `koanf:"mongodb"`
 }
 
