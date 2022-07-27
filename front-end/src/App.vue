@@ -4,12 +4,14 @@ import RoutesWithTransition from "@/router/RoutesWithTransition.vue";
 </script>
 
 <template>
-  <!-- Navigation bar -->
-  <Header />
-  <!-- Router view -->
-  <RoutesWithTransition />
+  <main>
+    <!-- Navigation bar -->
+    <Header />
+    <!-- Router view -->
+    <RoutesWithTransition />
+  </main>
 </template>
 
 <style>
-@import './assets/base.css';
+@import "./assets/base.css";
 </style>
