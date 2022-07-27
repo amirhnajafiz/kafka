@@ -1,5 +1,13 @@
 address: 8000
 
+admin: 
+  user: ""
+  pass: ""
+
+jwt:
+  key: ""
+  timeout: 5
+
 mongodb:
   database: ""
   url: ""
