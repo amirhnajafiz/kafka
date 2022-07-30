@@ -16,7 +16,7 @@ func (h *Handler) Login(c *fiber.Ctx) error {
 
 	_ = c.BodyParser(&userRequest)
 
-	if userRequest.Username != h.Admin.User || userRequest.Password != h.Admin.Pass {
+	if userRequest.Username != h.Cfg.Admin.User || userRequest.Password != h.Cfg.Admin.Pass {
 		return c.SendStatus(http.StatusUnauthorized)
 	}
 

@@ -5,8 +5,8 @@ import (
 	"log"
 
 	"github.com/amirhnajafiz/personal-website/back-end/internal/database/mongo"
+	"github.com/amirhnajafiz/personal-website/back-end/internal/http/handler"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/jwt"
-	"github.com/amirhnajafiz/personal-website/back-end/internal/model"
 	"github.com/knadh/koanf"
 	"github.com/knadh/koanf/parsers/yaml"
 	"github.com/knadh/koanf/providers/file"
@@ -14,10 +14,10 @@ import (
 )
 
 type Config struct {
-	Address int          `koanf:"address"`
-	Admin   model.Admin  `koanf:"admin"`
-	JWT     jwt.Config   `koanf:"jwt"`
-	Mongodb mongo.Config `koanf:"mongodb"`
+	Address int            `koanf:"address"`
+	Http    handler.Config `koanf:"http"`
+	JWT     jwt.Config     `koanf:"jwt"`
+	Mongodb mongo.Config   `koanf:"mongodb"`
 }
 
 func Load() Config {

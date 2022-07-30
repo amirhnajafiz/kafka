@@ -1,8 +1,9 @@
 address: 8000
 
-admin: 
-  user: ""
-  pass: ""
+http:
+  admin:
+    user: ""
+    pass: ""
 
 jwt:
   key: ""

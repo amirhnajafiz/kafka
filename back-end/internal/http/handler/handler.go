@@ -3,12 +3,11 @@ package handler
 import (
 	"github.com/amirhnajafiz/personal-website/back-end/internal/database/store"
 	"github.com/amirhnajafiz/personal-website/back-end/internal/jwt"
-	"github.com/amirhnajafiz/personal-website/back-end/internal/model"
 	"github.com/gofiber/fiber/v2"
 )
 
 type Handler struct {
-	Admin              model.Admin
+	Cfg                Config
 	JWT                jwt.JWT
 	ProjectsCollection store.ProjectsCollection
 }
