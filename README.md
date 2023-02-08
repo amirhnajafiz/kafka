@@ -74,6 +74,19 @@ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 -
 
 <br />
 
+## Docker
+
+If you have docker installed on your virtual machine, you can set up
+kafka cluster and zookeeper with docker compose file.
+
+```shell
+docker compose up -d
+```
+
+See the images in [```dockerhub```](https://hub.docker.com/r/johnnypark/kafka-zookeeper/).
+
+<br />
+
 ## Resources
 
 - [https://kafka.apache.org](https://kafka.apache.org/)
