@@ -48,7 +48,20 @@ broker is the leader of a given partition and topic and perform leader elections
 
 ### Dashboard
 
+To set a dashboard for our kafka cluster, we are going to
+use CMAK. CMAK (previously known as Kafka Manager) 
+is a tool for managing Apache Kafka clusters.
+
+Read more about CMAK in this [```repository```](https://github.com/yahoo/CMAK).
+
 ### Test kafka machine
+
+We can test our kafka machine by creating a new topic:
+
+```shell
+cd /home/kafka/kafka/
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Topic1
+```
 
 <br />
 
