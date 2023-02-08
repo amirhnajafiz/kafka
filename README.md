@@ -31,6 +31,27 @@ built on reliable message queuing architecture.
 
 <br />
 
+## Install
+
+To install kafka on your VM, follow the instructions
+in [manual guide](install/README.md).
+
+### Source files
+
+You can download kafka source files from kafka official
+archives. Just visit [```kafka archives```](https://kafka.apache.org/downloads).
+
+### Zookeeper
+
+Zookeeper is used by Kafka brokers to determine which 
+broker is the leader of a given partition and topic and perform leader elections. Zookeeper stores configurations for topics and permissions. Zookeeper sends notifications to Kafka in case of changes (e.g. new topic, broker dies, broker comes up, delete topics, etc.
+
+### Dashboard
+
+### Test kafka machine
+
+<br />
+
 ## Resources
 
 - [https://kafka.apache.org](https://kafka.apache.org/)
