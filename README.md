@@ -30,3 +30,9 @@ built on reliable message queuing architecture.
 </p>
 
 <br />
+
+## Resources
+
+- [https://kafka.apache.org](https://kafka.apache.org/)
+- [https://hevodata.com](https://hevodata.com/blog/how-to-install-kafka-on-ubuntu/)
+- [https://cloudinfrastructure.co.uk](https://cloudinfrastructureservices.co.uk/install-apache-kafka-on-ubuntu-20-04-cluster/)
